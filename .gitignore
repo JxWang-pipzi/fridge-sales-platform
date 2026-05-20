@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+target/
+build/
+out/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# Test
+coverage/
+.nyc_output/
+.browsers/
+test-flow.js
+test-screenshots/
+/test-admin-complete.ps1
+/package.json
+/package-lock.json
+
+# Auto-generated
+.github/appmod/
+
+# Temp
+*.tmp
+*.temp
+.cache/
+
+# Package locks (keep one)
+# package-lock.json
+# pnpm-lock.yaml
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+.mvn/
+
+# Gradle
+.gradle/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Misc
+*.bak
+*.swp
+*~

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fridge.sales.mapper.CartMapper">
+
+    <!-- 查询用户购物车列表（关联商品信息） -->
+    <select id="selectCartWithProduct" resultType="com.fridge.sales.dto.CartVO">
+        SELECT 
+            c.id,
+            c.product_id AS productId,
+            p.name AS productName,
+            p.image AS productImage,
+            p.brand,
+            p.model,
+            p.price,
+            p.original_price AS originalPrice,
+            p.stock,
+            p.status AS productStatus,
+            c.quantity,
+            (p.price * c.quantity) AS subtotal,
+            c.create_time AS createTime
+        FROM cart c
+        LEFT JOIN product p ON c.product_id = p.id
+        WHERE c.user_id = #{userId}
+        ORDER BY c.create_time DESC
+    </select>
+
+    <!-- 根据用户ID和商品ID查询购物车项 -->
+    <select id="selectByUserIdAndProductId" resultType="com.fridge.sales.entity.Cart">
+        SELECT 
+            id,
+            user_id AS userId,
+            product_id AS productId,
+            quantity,
+            create_time AS createTime
+        FROM cart
+        WHERE user_id = #{userId} AND product_id = #{productId}
+    </select>
+
+</mapper>
